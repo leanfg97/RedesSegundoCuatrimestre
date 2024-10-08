@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Musicos</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: lightsalmon;
+            color: black;
+            padding: 20px; 
+            margin: 0;
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            background-color: lightseagreen;
+        }
+
+        th {
+            background-color: lightgreen;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        @media (max-width: 800px) {
+            .campo-dato {
+                display: none;
+            }
+        }
+
+        footer {
+            background-color: lightsalmon;
+            width: 100%;
+            height: 90px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tablas RWD</h1>
+    </header>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>País de Origen</th>
+                <th class="campo-dato">Instrumento</th>
+                <th class="campo-dato">Banda</th>
+                <th class="campo-dato">Otra Característica</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Paul McCartney</td>
+                <td>Inglaterra</td>
+                <td class="campo-dato">Bajo</td>
+                <td class="campo-dato">The Beatles</td>
+                <td class="campo-dato">Zurdo</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>John Lennon</td>
+                <td>Inglaterra</td>
+                <td class="campo-dato">Guitarra</td>
+                <td class="campo-dato">The Beatles</td>
+                <td class="campo-dato">Contestatario</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>George Harrison</td>
+                <td>Inglaterra</td>
+                <td class="campo-dato">Guitarra</td>
+                <td class="campo-dato">The Beatles</td>
+                <td class="campo-dato">Budista</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Ringo Starr</td>
+                <td>Inglaterra</td>
+                <td class="campo-dato">Bateria</td>
+                <td class="campo-dato">The Beatles</td>
+                <td class="campo-dato">Metronomo humano</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Paul Simon</td>
+                <td>Estados Unidos</td>
+                <td class="campo-dato">Guitarra, voz</td>
+                <td class="campo-dato">Simon & Garfunkel</td>
+                <td class="campo-dato">Cantautor notable</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Art Garfunkel</td>
+                <td>Estados Unidos</td>
+                <td class="campo-dato">Voz</td>
+                <td class="campo-dato">Simon & Garfunkel</td>
+                <td class="campo-dato">Tenor</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Thijs van Leer</td>
+                <td>Holanda</td>
+                <td class="campo-dato">Piano, flauta</td>
+                <td class="campo-dato">Focus</td>
+                <td class="campo-dato">Compositor barroco moderno</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Jan Akkerman</td>
+                <td>Holanda</td>
+                <td class="campo-dato">Guitarra</td>
+                <td class="campo-dato">Focus</td>
+                <td class="campo-dato">Laudista</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Pete Ham</td>
+                <td>Gales</td>
+                <td class="campo-dato">Guitarra</td>
+                <td class="campo-dato">Badfinger</td>
+                <td class="campo-dato">Club 27</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Luis Alberto Spinetta</td>
+                <td>Argentina</td>
+                <td class="campo-dato">Guitarra</td>
+                <td class="campo-dato">Almendra, Jade</td>
+                <td class="campo-dato">Multibanda</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Emilio del Guercio</td>
+                <td>Argentina</td>
+                <td class="campo-dato">Bajo</td>
+                <td class="campo-dato">Aquelarre</td>
+                <td class="campo-dato">Folclorista</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Rodolfo Garcia</td>
+                <td>Argentina</td>
+                <td class="campo-dato">Bateria</td>
+                <td class="campo-dato">Aquelarre</td>
+                <td class="campo-dato">Acordeonista</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Hugo Gonzalez Neira</td>
+                <td>Argentina</td>
+                <td class="campo-dato">Teclados</td>
+                <td class="campo-dato">Aquelarre</td>
+                <td class="campo-dato">Pianista clasico</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Ara Tokatlian</td>
+                <td>Egipto</td>
+                <td class="campo-dato">Vientos</td>
+                <td class="campo-dato">Arco Iris</td>
+                <td class="campo-dato">Meditador</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Stewart Copeland</td>
+                <td>Estados Unidos</td>
+                <td class="campo-dato">Bateria</td>
+                <td class="campo-dato">The Police</td>
+                <td class="campo-dato">Musica de peliculas</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer>
+        <h2>Que en paz descansen algunos de ellos.</h2>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Basico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: lightsalmon;
+            color: black;
+            padding: 20px;
+            margin: 0;
+        }
+
+        footer h2 {
+            text-align: center;
+            background-color: lightsalmon;
+            color: black;
+            padding: 20px;
+            margin: 0;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+        }
+
+        nav {
+            flex: 1;
+            background-color: lightgreen;
+            padding: 20px;
+            height: 760px;
+            width: 300px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+        }
+
+        nav h2 {
+            text-align: center;
+        }
+
+        .boton {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            text-align: center;
+            background-color: #ddd;
+            color: #333;
+            text-decoration: none;
+            width: 80%;
+        }
+
+        .contenido {
+            flex: 2;
+            padding: 20px;
+            overflow-y: auto;
+            height: 760px;
+        }
+
+        p {
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Ford Motor Company</h1>
+    </header>
+    <main>
+        <nav>
+            <h2>Menu</h2>
+            <a href="" class="boton">Historia</a>
+            <a href="" class="boton">Hoy en dia</a>
+            <a href="" class="boton">Variedades</a>
+            <a href="" class="boton">Imagenes</a>
+        </nav>
+        <div class="contenido">
+            <p>El comienzo de la historia
+                Fundada por Henry Ford se incorporó el 16 de junio de 1903. 
+                La compañía vende automóviles y vehículos comerciales bajo la marca Ford y la mayoría de autos
+                de lujo bajo la marca Lincoln. Ford también controla al fabricante brasileño de SUVs Troller
+                y el australiano FPV. También ha fabricado tractores y demás componentes automotrices.
+                Al mismo tiempo, fundó en Europa la división Premier Automotive Group, a través de la cual 
+                controlaba las acciones de las marcas británicas Aston Martin, actualmente una compañía 
+                independiente, Jaguar Cars y Land Rover, actualmente convertidos en la división 
+                Jaguar Land Rover del consorcio hindú Tata Motors; y la sueca Volvo Cars, 
+                actualmente propiedad del grupo chino Geely.
+            </p>
+
+            <img src="./imageford.png" alt="">
+
+            <p>
+                Ford fue fundada el 16 de junio de 1903 con US$28 000 ($844 459 en 2024) aportados por 
+                once inversores, entre los que se incluía el socio que le dio nombre a la compañía, 
+                Henry Ford, que por aquel entonces contaba con 40 años de edad. En sus primeros años, 
+                Ford producía unos pocos coches por día en su fábrica en la avenida Mack en Detroit, Míchigan.
+                La familia Ford ha mantenido el control de la compañía durante casi 100 años. Ford fue 
+                una de las empresas que logró sobrevivir a la Gran Depresión de los años 1930. En 1908, 
+                la compañía lanzó el modelo T, cuya primera unidad fue fabricada en la planta manufacturera 
+                de Piquette. La compañía tuvo que trasladar poco después sus instalaciones de producción a la 
+                planta de Highland Park (Míchigan), más grande que la anterior, para poder satisfacer la 
+                demanda del nuevo modelo T. Hacia 1913, la compañía había desarrollado todas las técnicas 
+                básicas de línea de producción y producción en masa. Ford creó la primera línea de 
+                producción móvil del mundo ese año, la cual redujo el tiempo de ensamblaje del chasis 
+                de 12 horas y media a 100 minutos.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <h2>Nacidos Ford, nacidos fuertes.</h2>
+    </footer>
+
+</html>

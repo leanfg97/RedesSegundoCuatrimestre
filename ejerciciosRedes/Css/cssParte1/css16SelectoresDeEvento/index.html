@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Effects</title>
+    <style>
+        body {
+            background-color: lightgreen;
+        }
+
+        .container {
+            width: 100%;
+            height: 30pxvh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            width: 100px;
+            height: 40px;
+            background-color: grey;
+            color: yellow;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .option:hover {
+            background-color: black;
+            color: white;
+        }
+
+        input[type="text"]:focus {
+            background-color: lightblue;
+            border: 1px solid blue;
+        }
+
+        .container2 {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+        }
+
+        #foto1 {
+            width: 100px;
+            height: 100px;
+            border: solid;
+
+        }
+
+        #foto1 img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: transform 0.3s;
+        }
+        #ffoto:active {
+            transform: scale(6);
+
+        }
+        #foto2 {
+            width: 100px;
+            height: 100px;
+            border: solid;
+
+        }
+
+        #foto2 img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: transform 0.3s;
+        }
+        #ffoto2:active {
+            transform: scale(6);
+
+        }
+        #foto3 {
+            width: 100px;
+            height: 100px;
+            border: solid;
+
+        }
+
+        #foto3 img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: transform 0.3s;
+        }
+        #ffoto3:active {
+            transform: scale(6);
+
+        }
+        #foto4 {
+            width: 100px;
+            height: 100px;
+            border: solid;
+
+        }
+
+        #foto4 img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: transform 0.3s;
+        }
+        #ffoto4:active {
+            transform: scale(5);
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="./resp1.html"><div class="option">Opcion 1</div></a>
+        <a href="./resp2.html"><div class="option">Opcion 2</div></a>
+        <a href="./resp3.html"><div class="option">Opcion 3</div></a>
+    </div>
+
+    <form action="">
+        <label for="apellido">Apellido:</label>
+        <br>
+        <input type="text" id="apellido">
+        <br>
+        <label for="nombre">Nombre:</label>
+        <br>
+        <input type="text" id="nombre">
+    </form>
+
+    <h2>Expandir la imagen al 50% del contenedor padre con un click</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container2">
+        <div id="foto1">
+            <img id="ffoto" src="./11501745744_b04bf43a94_z.jpg" alt="">
+        </div>
+        <div id="foto2">
+            <img id="ffoto2" src="./tropical-beach_74190-188.avif" alt="">
+        </div>
+        <div id="foto3">
+            <img id="ffoto3" src="./white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg" alt="">
+        </div>
+        <div id="foto4">
+            <img id="ffoto4" src="./bridgepan.jpg" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

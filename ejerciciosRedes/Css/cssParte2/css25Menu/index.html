@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        #menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        #menu>li {
+            position: relative;
+            padding: 10px;
+            cursor: pointer;
+            background-color: lightseagreen;
+            color: black;
+            border: solid;
+            width: 200px;
+            text-align: center;
+        }
+        
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #menu ul {
+            padding: 0;
+            display: none;
+            position: absolute;
+            background-color: lightcyan;
+            left: 0;
+            top: 100%;
+            width: 100%;
+            list-style: none;
+        }
+
+
+        #menu>li:hover ul {
+            display: block;
+        }
+
+
+        #menu ul li {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="menu">
+        <li><a href="../../html/index.html">HTML</a>
+            <ul>
+                <li><a href="/Html/ejer01PreguntasHTTP/">Preguntas HTTP</a></li>
+                <li><a href="/html/ejer02Tablas/index.html">Tablas</a></li>
+                <li><a href="/html/ejer03Formularios/index.html">Formulario</a></li>
+                <li><a href="/html/ejer04Iframe/index.html">Iframe</a></li>
+            </ul>
+        </li>
+        <li><a href="/css/index.html">CSS</a>
+            <ul>
+                <li><a href="../../cssParte1/css08CentradoYPadding/index.html">Centrado y padding</a></li>
+                <li><a href="../../cssParte1/css10DivsEnPila/index.html">Divs en pila</a></li>
+                <li><a href="../../cssParte1/css11DivsEnFila/index.html">Divs en fila</a></li>
+                <li><a href="../../cssParte1/css16SelectoresDeEvento/index.html">Selectores</a></li>
+            </ul>
+        </li>
+        <li>JSCRIPT</li>
+        <li>ESPECIALES</li>
+        <li>PHP</li>
+    </ul>
+</body>
+
+</html>

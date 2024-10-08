@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    form {
+        background-color: lightcoral;
+        width: 70%;
+        height: 300px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <form action="" id="miForm">
+        <h1>Confirmación de envío y de reset</h1>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre">
+        <br><br>
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido">
+        <br><br><br><br>
+        <button id="blanquear">Blanquear</button>
+        <button id="enviar">Enviar</button>
+    </form>
+
+    <script>
+        document.getElementById("blanquear").addEventListener("click", function () {
+            document.getElementById("nombre").value = "";
+            document.getElementById("apellido").value = "";
+        });
+
+        document.getElementById("enviar").addEventListener("click", function () {
+            const nombre = document.getElementById("nombre").value;
+            const apellido = document.getElementById("apellido").value;
+
+            if (nombre && apellido) {
+                const confirmacion = confirm("esta seguro de enviar?");
+                if (confirmacion) {
+                    document.getElementById("miForm").method = "get";
+                    document.getElementById("miForm").action = "./confirmacion.html";
+                    document.getElementById("miForm").submit();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

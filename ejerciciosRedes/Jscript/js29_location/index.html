@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location</title>
+</head>
+
+<body>
+    <button id="youtube">Youtube</button>
+    <button id="google">Google</button>
+    <button id="reddit">Reddit</button>
+
+    <script>
+
+        const youtubeButton = document.getElementById("youtube");
+        const googleButton = document.getElementById("google");
+        const redditButton = document.getElementById("reddit");
+
+
+        youtube.addEventListener("click", function () {
+            window.location.href = "https://www.youtube.com/";
+        });
+
+        google.addEventListener("click", function () {
+            window.location.href = "https://www.google.com/";
+        });
+
+        reddit.addEventListener("click", function () {
+            window.location.href = "https://www.reddit.com/";
+        });
+    </script>
+</body>
+
+</html>

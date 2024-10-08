@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>esp10TablaVariableArregloDeObjetos</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name=“addsearch-category” content=“Cursada de Redes en UB”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<style>
+
+    body{
+        height: 100%;
+        background-color: grey;
+        
+    }
+    header {
+            background-color: rgb(63, 136, 63);
+         /*   padding-bottom: 0px;
+            padding-top: 3px;*/
+            position: fixed;
+            height: 60px;
+            bottom: 10px;
+            top: 0;
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .boton-derecha {
+            background-color: #007bff; /* Cambia el color del botón según tus preferencias */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            margin-right: 30px;
+            cursor: pointer;
+        }
+
+          footer{
+            background-color: rgb(63, 136, 63);
+            height: 60px;
+            text-align: center;
+            padding-bottom: 5%;
+            bottom: 0;
+            left:0;
+            position: fixed;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 73px; /* Espacio entre el encabezado y la tabla */
+            overflow-y: auto;
+             
+        }
+
+    th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size:20px ;
+    }
+    td{
+        background-color: burlywood;
+    }
+    th {
+    background-color: #f2f2f2;
+
+    }
+    @media screen and (max-width: 600px) {
+    th,td {
+        font-size: 12px;
+    }
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() { 
+
+    //Primero: Parsear el texto JSON para obtener una variable java script tipo objeto.
+    //Segundo: Barrer con un forEach() cada elemento del array obtenido como primer atributo del objeto.
+    ///Tercero: Crear dinámicamente filas y columnas de la tabla de igual manera
+    //que cuando creábamos opciones de un select.
+     
+        
+    
+            var textoProduccion = [{"codProd":"01","descripcion":"Trigo","TipoProd":"Cereal","Cantidad":1000,"Unidad":"Toneladas","FechaAlta":"25/01/2023"},
+            {"codProd":"02","descripcion":"Girasol","TipoProd":"Oleaginosa","Cantidad":2000,"Unidad":"Toneladas","FechaAlta":"18/04/2023"},
+            {"codProd":"03","descripcion":"Maiz","TipoProd":"Oleaginosa","Cantidad":5000,"Unidad":"Toneladas","FechaAlta":"07/04/2023"},
+            {"codProd":"04","descripcion":"Novillo","TipoProd":"Ganado","Cantidad":100,"Unidad":"Cabezas","FechaAlta":"15/01/2023"},
+            {"codProd":"05","descripcion":"Fardos de Pasto","TipoProd":"Alimento","Cantidad":100,"Unidad":"Fardos","FechaAlta":"21/05/2023"},
+            {"codProd":"01","descripcion":"Trigo","TipoProd":"Cereal","Cantidad":1000,"Unidad":"Toneladas","FechaAlta":"25/01/2023"},
+            {"codProd":"02","descripcion":"Girasol","TipoProd":"Oleaginosa","Cantidad":2000,"Unidad":"Toneladas","FechaAlta":"18/04/2023"},
+            {"codProd":"03","descripcion":"Maiz","TipoProd":"Oleaginosa","Cantidad":5000,"Unidad":"Toneladas","FechaAlta":"07/04/2023"},
+            {"codProd":"04","descripcion":"Novillo","TipoProd":"Ganado","Cantidad":100,"Unidad":"Cabezas","FechaAlta":"15/01/2023"},
+            {"codProd":"05","descripcion":"Fardos de Pasto","TipoProd":"Alimento","Cantidad":100,"Unidad":"Fardos","FechaAlta":"21/05/2023"},
+            {"codProd":"01","descripcion":"Trigo","TipoProd":"Cereal","Cantidad":1000,"Unidad":"Toneladas","FechaAlta":"25/01/2023"},
+            {"codProd":"02","descripcion":"Girasol","TipoProd":"Oleaginosa","Cantidad":2000,"Unidad":"Toneladas","FechaAlta":"18/04/2023"},
+            {"codProd":"03","descripcion":"Maiz","TipoProd":"Oleaginosa","Cantidad":5000,"Unidad":"Toneladas","FechaAlta":"07/04/2023"},
+            {"codProd":"04","descripcion":"Novillo","TipoProd":"Ganado","Cantidad":100,"Unidad":"Cabezas","FechaAlta":"15/01/2023"},
+            {"codProd":"05","descripcion":"Fardos de Pasto","TipoProd":"Alimento","Cantidad":100,"Unidad":"Fardos","FechaAlta":"21/05/2023"}];
+            
+         //   objJson=JSON.parse(textoProduccion);
+    
+    
+            var tablaBody = document.getElementById("tabla-body");
+    
+        document.getElementById("Boton1").onclick= function() {    
+    
+        textoProduccion.forEach(function(item) {
+        var row = document.createElement("tr");
+    
+        var codProdCell = document.createElement("td");
+        codProdCell.setAttribute("data-nombre", item.codProd);
+        codProdCell.innerHTML = item.codProd;
+    
+        var descripcionCell = document.createElement("td");
+        descripcionCell.setAttribute("data-edad", item.descripcion);
+        descripcionCell.innerHTML = item.descripcion;
+    
+        var TipoProdCell = document.createElement("td");
+        TipoProdCell.setAttribute("data-ciudad", item.TipoProd);
+        TipoProdCell.innerHTML = item.TipoProd;
+    
+        var CantidadCell = document.createElement("td");
+        CantidadCell.setAttribute("data-nombre", item.Cantidad);
+        CantidadCell.innerHTML = item.Cantidad;
+    
+        var UnidadCell = document.createElement("td");
+        UnidadCell.setAttribute("data-edad", item.Unidad);
+        UnidadCell.innerHTML = item.Unidad;
+    
+        var FechaAltaCell = document.createElement("td");
+        FechaAltaCell.setAttribute("data-ciudad", item.FechaAlta);
+        FechaAltaCell.innerHTML = item.FechaAlta;  
+    
+        row.appendChild(codProdCell);
+        row.appendChild(descripcionCell);
+        row.appendChild(TipoProdCell);
+        row.appendChild(CantidadCell);
+        row.appendChild(UnidadCell);
+        row.appendChild(FechaAltaCell);
+        
+        tablaBody.appendChild(row);
+    });
+        }
+        document.getElementById("Boton2").onclick= function() {    
+            $("#tabla-body") . empty();
+        }
+    });
+    </script>
+</head>
+<body>
+    <header>
+        <h2 style="margin:auto; ">Maestro de Productos</h2>
+        <button type="submit" class="boton-derecha" id="Boton1" style="text-align: right;">Mostrar Tabla</button>
+        <button type="submit" class="boton-derecha" id="Boton2" style="text-align: right;">Ocultar Tabla</button>
+    </header>
+
+    <table >
+        <thead>
+            <tr>
+                <th>Codigo Producto</th>
+                <th>Descripción</th>
+                <th>Tipo Producto</th>
+                <th>Cantidad</th>
+                <th>Unidad</th>
+                <th>Fecha de Alta</th>
+
+            </tr>
+        </thead>
+
+            <tbody id="tabla-body">
+                <!-- Aquí se generará la tabla con JavaScript -->
+            </tbody>
+    </table>
+
+
+</body>
+<footer>
+<h2 >Pie de Formulario</h2>
+</footer>
+
+</html>

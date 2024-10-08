@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Personas</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 400px;
+            height: 400px;
+            background-color: aqua;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre">
+        <br>
+        <label for="apellido">Apellido: </label>
+        <input type="text" id="apellido">
+        <br>
+        <label for="fechaNacimiento">Fecha de Nacimiento: </label>
+        <input type="date" id="fechaNacimiento">
+        <br>
+        <br>
+        <button onclick="agregarPersona()">Agregar Persona</button>
+    </div>
+
+    <div id="tablaContainer" style="display: none;">
+        <h2>Lista de Personas</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                </tr>
+            </thead>
+            <tbody id="tablaBody">
+
+            </tbody>
+        </table>
+        <button onclick="ocultarTabla()">Ocultar Tabla</button>
+    </div>
+
+    <button onclick="mostrarTabla()">Mostrar Tabla</button>
+
+    <script>
+        let personas = [];
+
+        function agregarPersona() {
+            const nombre = document.getElementById("nombre").value;
+            const apellido = document.getElementById("apellido").value;
+            const fechaNacimiento = document.getElementById("fechaNacimiento").value;
+
+            if (nombre && apellido && fechaNacimiento) {
+                const persona = {
+                    nombre: nombre,
+                    apellido: apellido,
+                    fechaNacimiento: fechaNacimiento
+                };
+
+                personas.push(persona);
+
+                document.getElementById("nombre").value = "";
+                document.getElementById("apellido").value = "";
+                document.getElementById("fechaNacimiento").value = "";
+            }
+        }
+
+        function mostrarTabla() {
+            const tablaContainer = document.getElementById("tablaContainer");
+            const tablaBody = document.getElementById("tablaBody");
+
+            tablaBody.innerHTML = "";
+
+            if (personas.length === 0) {
+
+            } else {
+                personas.forEach((persona) => {
+                    const row = document.createElement("tr");
+                    const nombre = document.createElement("td");
+                    const apellido = document.createElement("td");
+                    const fechaNacimiento = document.createElement("td");
+
+                    nombre.textContent = persona.nombre;
+                    apellido.textContent = persona.apellido;
+                    fechaNacimiento.textContent = persona.fechaNacimiento;
+
+                    row.appendChild(nombre);
+                    row.appendChild(apellido);
+                    row.appendChild(fechaNacimiento);
+
+                    tablaBody.appendChild(row);
+                });
+
+                tablaContainer.style.display = "block";
+            }
+            const cantidadPersonasTexto = document.createElement("p");
+            cantidadPersonasTexto.textContent = `Total de personas en la lista: ${personas.length}`;
+            tablaContainer.appendChild(cantidadPersonasTexto);
+        }
+
+        function ocultarTabla() {
+            const tablaContainer = document.getElementById("tablaContainer");
+            tablaContainer.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

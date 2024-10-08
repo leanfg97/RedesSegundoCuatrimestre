@@ -1,0 +1,21 @@
+var textoClaseProductos = '{"productos":[{"idProducto":"P01","descrProd":"Oleaginosa"},{"idProducto":"P02","descrProd":"Cereal"},{"idProducto":"P03","descrProd":"Ganado"},{"idProducto":"P04","descrProd":"Alimento"}]};
+
+var textoUnidadesDeMedida = '{“unidadesDeMedida": [{"codUm":“KG","descripcionUm":“Kilogramos"},{"codUm":“BO05LT","descripcionUm":“Bolsa 0.5 litros"},{"codUm":“LAT","descripcionUm":“Lata"}]}';
+
+objJson=JSON.parse(textoUnidadesDeMedida);
+
+function creaOpciones() {
+    objJson.unidadesDeMedida.forEach(function(argValor,argIndice) {
+    
+        var objOpcion= document.createElement("option");
+        objOpcion.setAttribute("className","elementoOptionSelect");
+        objOpcion.setAttribute("value",argValor.codUm);
+        objOpcion.innerHTML = argValor.descripcionUm;
+        document.getElementById("formArticulosUm").appendChild(objOpcion);
+    });
+}
+
+// Obtener el elemento del menú y llamar a la función para crear el menú
+//var productoElement = document.getElementById('claseProducto');
+//crearMenu(textoClaseProductos,productoElement);   //(var del arreglo,var del getElement de id del input)
+//</script>

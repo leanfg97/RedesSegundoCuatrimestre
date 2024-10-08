@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>esp15VentanaModal</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name=“addsearch-category” content=“Cursada de Redes en UB”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="scriptEsp15.js"></script>
+
+<style>
+
+    body{
+        height: 80%;
+        background-color: rgb(117, 77, 77);
+    }
+    .formulario {
+            width: auto;
+            margin: 0 auto;
+        }
+
+        .columnas {
+            display: flex;
+            justify-content: space-between;
+            margin-right: 5%;
+        }
+
+        .columna {
+            margin-top: 0;
+            flex-basis: 48%; /* Ajusta el ancho de las columnas según tus necesidades */
+        }
+
+        .formulario label{
+            width: 100%;
+            height: 30px;
+         
+            font-size: 20px;
+            margin-top: 20px;
+
+        }
+
+        .formulario input {
+            width: 100%;
+            height: 30px;
+        
+        }
+
+        .formulario button {
+            width: 100%;
+            height: 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+/*        div.contenedor{
+            background-color: rgb(78, 78, 203);
+        }*/
+        div.VentanaModal{
+        display:none;
+        position:fixed;
+        padding: 0;
+        Width: 50%;
+        Height: 400px;
+        left:25%;
+        overflow-y: auto;
+        background-color:rgb(158, 240, 158);
+        visibility:visible;
+            }
+    
+    .cerrar {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        }   
+
+    .cerrar:hover {
+        color: black;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <div class="contenedor" id="contenedor">
+        <p style="font-size: 20px;">Esto es un div contenedor</p>
+        <button type="submit" id="BotonM">Abre un div modal</button>
+    </div>
+        <div class="VentanaModal" id="contenido">
+            <span class="cerrar" id="cerrarModal";">&times;</span>
+            <div style="text-align: center; background-color: green; height:10%;align-items: center;">
+                <h2 style="margin-top: 0;padding-top: 10px;">Formulario para Alta - Maestro de Productos</h2>
+            
+            </div>
+            <div style="padding-left: 5%; height: 75%; ">
+                <form class="formulario" id="miForm">
+                    <br>
+                    <div class="columnas">
+                        <div class="columna">
+                            <label for="codProd">Código de Producto:</label><br><br>
+                            <input type="text" id="codigoProd" name="codigoProd" required>
+                        </div>
+                        <div class="columna">
+                            <label for="descripcionProd">Descripción:</label><br><br>
+                            <input type="text" id="descripcionProd" name="descripcionProd" required>
+                        </div>
+                    </div>
+                    <div class="columnas">
+                        <div class="columna">
+                            <label for="cantidad">Cantidad:</label><br><br>
+                            <input type="num" id="cantidad" name="cantidad" required>
+                        </div>
+                        <div class="columna">
+                            <label for="claseProducto">Clase de Producto:</label><br><br>
+                            <select style="width: 100%; height: 40px;" id="formArticulosUm" name="formArticulosUm" required>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="columnas">    
+                        <div class="columna">
+                            <label for="fechaAlta">Fecha de Alta:</label><br><br>
+                            <input type="date" id="fechaAlta" name="fechaAlta" required>
+                        </div>
+                        <div class="columna">
+                            <br><br>
+                            <button id="Boton2">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div style="text-align: center; background-color: green; height:10%;align-items: center;">
+                <h2 style="margin-bottom: 0;padding-top: 10px;">Pie de Formulario</h2>
+            </div>
+        </div>
+    <script>
+/*    // Obtener referencias a elementos HTML
+    var modal = document.getElementById('contenido');
+    var btnMostrarModal = document.getElementById('Boton1');
+    var btnCerrarModal = document.getElementById('cerrarModal');
+    var contenedor = document.getElementById('contenedor')
+    // Asignar un manejador de eventos al botón para mostrar el modal
+    btnMostrarModal.onclick = function() {
+        modal.style.display = 'block';
+        btnMostrarModal.disabled = true;
+        contenedor.style.opacity = 0.3;
+        modal.style.opacity = 1;
+    }
+
+    // Asignar un manejador de eventos al botón para cerrar el modal
+    btnCerrarModal.onclick = function() {
+        modal.style.display = 'none';
+        btnMostrarModal.disabled = false;
+        contenedor.style.opacity = 1;
+    }
+
+    var textoClaseProductos = '{"productos":[{"idProducto":"P01","descrProd":"Oleaginosa"},{"idProducto":"P02","descrProd":"Cereal"},{"idProducto":"P03","descrProd":"Ganado"},{"idProducto":"P04","descrProd":"Alimento"}]}';
+ 
+    objJson=JSON.parse(textoClaseProductos);
+
+    function crearOpciones() {
+
+        
+        objJson.productos.forEach(function(argValor,argIndice) {
+        
+            var objOpcion= document.createElement("option");
+            //objOpcion.setAttribute("className","elementoOptionSelect");
+            objOpcion.setAttribute("value",argValor.idProducto);
+            objOpcion.innerHTML = argValor.descrProd;
+            document.getElementById("formArticulosUm").appendChild(objOpcion);
+
+ 
+        });
+    }
+    var menuElement = document.getElementById('formArticuloUm');
+            crearOpciones(objJson, menuElement);
+
+    document.getElementById("Boton2").onclick= function() {            
+    
+    var confirma = confirm("Esta seguro de enviar"); 
+    
+    if (confirma=true){
+
+        document.getElementById("miForm").method ="get";              
+        document.getElementById("miForm").action ="./respuestaFormulario.html";
+        document.getElementById("miForm").submit();
+        }
+    }
+*/    </script>
+</body>
+
+</html>

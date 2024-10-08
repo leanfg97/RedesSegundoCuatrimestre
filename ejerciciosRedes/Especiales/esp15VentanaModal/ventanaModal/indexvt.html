@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>esp05FormVariableArregloDeObjetos</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name=“addsearch-category” content=“Cursada de Redes en UB”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<style>
+
+    body{
+        height: 80%;
+        background-color: grey;
+    }
+/*    header{
+        background-color: rgb(63, 136, 63);
+        height: 10%;
+        width: auto;
+        margin-top: 0;
+    
+     }*/
+     header {
+            background-color: rgb(63, 136, 63);
+            padding-bottom: 5%;
+            text-align: center;
+            position: fixed;
+            height: 10%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        footer{
+            background-color: rgb(63, 136, 63);
+            height: 8%;
+            text-align: center;
+            padding-bottom: 5%;
+            bottom: 0;
+            left:0;
+            position: fixed;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    .formulario {
+            width: auto;
+            margin: 0 auto;
+        }
+
+        .columnas {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5%;
+           margin-right: 5%;
+        }
+
+        .columna {
+            margin-top: 0;
+            flex-basis: 48%; /* Ajusta el ancho de las columnas según tus necesidades */
+        }
+
+        .formulario label{
+            width: 100%;
+            height: 40px;
+         
+            font-size: 20px;
+            margin-top: 20px;
+
+        }
+
+        .formulario input {
+            width: 100%;
+            height: 40px;
+        
+        }
+
+        .formulario button {
+            width: 100%;
+            height: 40px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+</style>
+</head>
+
+    <header>
+        <h2 style="text-align: center; ">Formulario para Alta - Maestro de Productos</h2>
+    </header>
+<body>
+    <form class="formulario">
+        <br>
+        <div class="columnas">
+            <div class="columna">
+                <label for="codProd">Código de Producto:</label><br><br>
+                <input type="text" id="codigoProd" name="codigoProd" required>
+            </div>
+            <div class="columna">
+                <label for="descripcionProd">Descripción:</label><br><br>
+                <input type="text" id="descripcionProd" name="descripcionProd" required>
+            </div>
+        </div>
+        <div class="columnas">
+            <div class="columna">
+                <label for="cantidad">Cantidad:</label><br><br>
+                <input type="num" id="cantidad" name="cantidad" required>
+            </div>
+            <div class="columna">
+                <label for="claseProducto">Clase de Producto:</label><br><br>
+                <select style="width: 100%; height: 40px;" id="formArticulosUm" name="formArticulosUm" required>
+                </select>
+            </div>
+        </div>
+        <div class="columnas">    
+            <div class="columna">
+                <label for="fechaAlta">Fecha de Alta:</label><br><br>
+                <input type="date" id="fechaAlta" name="fechaAlta" required>
+            </div>
+            <div class="columna">
+                <br><br>
+                <button type="submit">Enviar</button>
+            </div>
+        </div>
+    </form>
+    <script>
+
+    var textoClaseProductos = '{"productos":[{"idProducto":"P01","descrProd":"Oleaginosa"},{"idProducto":"P02","descrProd":"Cereal"},{"idProducto":"P03","descrProd":"Ganado"},{"idProducto":"P04","descrProd":"Alimento"}]}';
+ 
+    objJson=JSON.parse(textoClaseProductos);
+
+    function crearOpciones() {
+        objJson.productos.forEach(function(argValor,argIndice) {
+        
+            var objOpcion= document.createElement("option");
+            //objOpcion.setAttribute("className","elementoOptionSelect");
+            objOpcion.setAttribute("value",argValor.idProducto);
+            objOpcion.innerHTML = argValor.descrProd;
+            document.getElementById("formArticulosUm").appendChild(objOpcion);
+        });
+    }
+    var menuElement = document.getElementById('formArticuloUm');
+            crearOpciones(objJson, menuElement);
+    </script>
+</body>
+<footer>
+<h2 >Pie de Formulario</h2>
+</footer>
+
+</html>

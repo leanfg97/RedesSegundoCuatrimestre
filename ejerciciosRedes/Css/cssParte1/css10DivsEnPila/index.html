@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divs en pila</title>
+    <style>
+        body {
+            background-color: lightskyblue;
+        }
+
+        .div1 {
+            margin: auto;
+            width: 40%;
+            background-color: lightgrey;
+            height: 225px;
+            border: 2px solid black;
+            border-radius: 10px;
+            box-shadow: 16px 6px 2px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        @media (min-width: 1080px) {
+            .div1 {
+                background-color: lightgrey;
+            }
+        }
+
+        @media (max-width: 1080px) and (min-width: 600px) {
+            .div1 {
+                background-color: yellow;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .div1 {
+                background-color: lightblue;
+            }
+        }
+
+        .div1 p {
+            padding: 0px;
+            margin: 0%;
+        }
+
+        .div2 {
+            margin: auto;
+            width: 40%;
+            height: 225px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background: radial-gradient(circle, orange, white);
+        }
+
+        .div3 {
+            margin: auto;
+            width: 40%;
+            height: 225px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background: linear-gradient(45deg, orange, white);
+            text-align: center;
+        }
+
+        .div3 img {
+            height: 100%;
+        }
+
+        .div4 {
+            margin: auto;
+            width: 40%;
+            height: 225px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background: linear-gradient(-45deg, orange 0%, white 100%);
+            box-shadow: 16px 6px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .div4 p {
+            padding-left: 15px;
+        }
+
+        .div5 {
+            margin: auto;
+            width: 40%;
+            height: 225px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background: linear-gradient(-45deg, white 0%, orange 100%);
+            padding: 0;
+        }
+
+        .div5 p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="../../index.html">&#129044;Volver al Indice</a>
+    </nav>
+
+    <main>
+        <header>
+            <h1>Cajas en pila</h1>
+        </header>
+
+        <div class="div1">
+            <p>Viewport mayor a 1080: fondo gris</p>
+            <p>Viewport entre 600 y 1080: fondo amarillo</p>
+            <p>Viewport menor a 600: fondo celeste</p>
+        </div>
+        <br>
+        <div class="div2"></div>
+        <br>
+        <div class="div3"><img src="./11501745744_b04bf43a94_z.jpg" alt=""></div>
+        <br>
+        <div class="div4">
+            <p>Nodo de texto en div4 alineado a la izquierda y con padding</p>
+        </div>
+        <br>
+        <div class="div5">
+            <p>Nodo de texto en div5 alineado a la izquierda y sin padding</p>
+        </div>
+    </main>
+
+</body>
+
+</html>

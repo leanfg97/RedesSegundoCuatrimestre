@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    form {
+        background-color: lightgreen;
+        width: 70%;
+        height: 400px;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    button {
+        width: 100px;
+    }
+</style>
+
+<body>
+    <form action="" id="form">
+        <br>
+        <label for="dia">Ingrese el dia del mes</label>
+        <br>
+        <input type="number" id="dia">
+        <br><br>
+        <label for="mes">Ingrese el mes</label>
+        <br>
+        <input type="number" id="mes">
+        <br><br><br><br>
+        <button>Enviar</button>
+        <button>Reset</button>
+    </form>
+
+
+    <script>
+        const diaInput = document.getElementById("dia");
+        const mesInput = document.getElementById("mes");
+
+        diaInput.onkeyup = function () {
+            const dia = parseInt(diaInput.value);
+
+            if (dia > 31) {
+                alert("dia debe estar entre 1 y 31.");
+            }
+        };
+        mesInput.onkeyup = function () {
+            const mes = parseInt(mesInput.value);
+
+            if (mes < 1 || mes > 12) {
+                alert("mes debe estar entre 1 y 12.");
+            }
+        };
+    </script>
+</body>
+
+</html>

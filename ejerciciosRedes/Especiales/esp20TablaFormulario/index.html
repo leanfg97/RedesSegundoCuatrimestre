@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>esp20TablaFormulario</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name=“addsearch-category” content=“Cursada de Redes en UB”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<style>
+
+    body{
+        height: 100%;
+        background-color: grey;
+        
+    }
+    header {
+            background-color: rgb(63, 136, 63);
+         /*   padding-bottom: 0px;
+            padding-top: 3px;*/
+            position: fixed;
+            height: 60px;
+            bottom: 10px;
+            top: 0;
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .boton-derecha {
+            background-color: #007bff; /* Cambia el color del botón según tus preferencias */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            margin-right: 30px;
+            cursor: pointer;
+        }
+
+          footer{
+            background-color: rgb(63, 136, 63);
+            height: 60px;
+            text-align: center;
+            padding-bottom: 5%;
+            bottom: 0;
+            left:0;
+            position: fixed;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 73px; /* Espacio entre el encabezado y la tabla */
+            overflow-y: auto;
+             
+        }
+
+    th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size:20px ;
+    }
+    td{
+        background-color: burlywood;
+    }
+    th {
+    background-color: #f2f2f2;
+
+    }
+    @media screen and (max-width: 600px) {
+    th,td {
+        font-size: 12px;
+    }
+}
+.formulario {
+            width: auto;
+            margin: 0 auto;
+        }
+
+        .columnas {
+            display: flex;
+            justify-content: space-between;
+            margin-right: 5%;
+        }
+
+        .columna {
+            margin-top: 0;
+            flex-basis: 48%; /* Ajusta el ancho de las columnas según tus necesidades */
+        }
+
+        .formulario label{
+            width: 100%;
+            height: 30px;
+         
+            font-size: 20px;
+            margin-top: 20px;
+
+        }
+
+        .formulario input {
+            width: 100%;
+            height: 30px;
+        
+        }
+
+        .formulario button {
+            width: 100%;
+            height: 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+/*        div.contenedor{
+            background-color: rgb(78, 78, 203);
+        }*/
+        div.VentanaModal{
+        display:none;
+        position:fixed;
+        padding: 0;
+        Width: 50%;
+        Height: 400px;
+        left:25%;
+        overflow-y: auto;
+        background-color:rgb(158, 240, 158);
+        visibility:visible;
+            }
+    
+    .cerrar {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        }   
+
+    .cerrar:hover {
+        color: black;
+        cursor: pointer;
+    }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() { 
+
+    //Primero: Parsear el texto JSON para obtener una variable java script tipo objeto.
+    //Segundo: Barrer con un forEach() cada elemento del array obtenido como primer atributo del objeto.
+    ///Tercero: Crear dinámicamente filas y columnas de la tabla de igual manera
+    //que cuando creábamos opciones de un select.
+     
+        
+    
+            var textoProduccion = [{"codProd":"01","descripcion":"Trigo","TipoProd":"Cereal","Cantidad":1000,"Unidad":"Toneladas","FechaAlta":"25/01/2023"},
+            {"codProd":"02","descripcion":"Girasol","TipoProd":"Oleaginosa","Cantidad":2000,"Unidad":"Toneladas","FechaAlta":"18/04/2023"},
+            {"codProd":"03","descripcion":"Maiz","TipoProd":"Oleaginosa","Cantidad":5000,"Unidad":"Toneladas","FechaAlta":"07/04/2023"},
+            {"codProd":"04","descripcion":"Novillo","TipoProd":"Ganado","Cantidad":100,"Unidad":"Cabezas","FechaAlta":"15/01/2023"},
+            {"codProd":"05","descripcion":"Fardos de Pasto","TipoProd":"Alimento","Cantidad":100,"Unidad":"Fardos","FechaAlta":"21/05/2023"},
+            {"codProd":"01","descripcion":"Trigo","TipoProd":"Cereal","Cantidad":1000,"Unidad":"Toneladas","FechaAlta":"25/01/2023"},
+            {"codProd":"02","descripcion":"Girasol","TipoProd":"Oleaginosa","Cantidad":2000,"Unidad":"Toneladas","FechaAlta":"18/04/2023"},
+            {"codProd":"03","descripcion":"Maiz","TipoProd":"Oleaginosa","Cantidad":5000,"Unidad":"Toneladas","FechaAlta":"07/04/2023"},
+            {"codProd":"04","descripcion":"Novillo","TipoProd":"Ganado","Cantidad":100,"Unidad":"Cabezas","FechaAlta":"15/01/2023"},
+            {"codProd":"05","descripcion":"Fardos de Pasto","TipoProd":"Alimento","Cantidad":100,"Unidad":"Fardos","FechaAlta":"21/05/2023"},
+            {"codProd":"01","descripcion":"Trigo","TipoProd":"Cereal","Cantidad":1000,"Unidad":"Toneladas","FechaAlta":"25/01/2023"},
+            {"codProd":"02","descripcion":"Girasol","TipoProd":"Oleaginosa","Cantidad":2000,"Unidad":"Toneladas","FechaAlta":"18/04/2023"},
+            {"codProd":"03","descripcion":"Maiz","TipoProd":"Oleaginosa","Cantidad":5000,"Unidad":"Toneladas","FechaAlta":"07/04/2023"},
+            {"codProd":"04","descripcion":"Novillo","TipoProd":"Ganado","Cantidad":100,"Unidad":"Cabezas","FechaAlta":"15/01/2023"},
+            {"codProd":"05","descripcion":"Fardos de Pasto","TipoProd":"Alimento","Cantidad":100,"Unidad":"Fardos","FechaAlta":"21/05/2023"}];
+            
+         //   objJson=JSON.parse(textoProduccion);
+    
+    
+            var tablaBody = document.getElementById("tabla-body");
+    
+        document.getElementById("Boton1").onclick= function() {    
+    
+        textoProduccion.forEach(function(item) {
+        var row = document.createElement("tr");
+    
+        var codProdCell = document.createElement("td");
+        codProdCell.setAttribute("data-nombre", item.codProd);
+        codProdCell.innerHTML = item.codProd;
+    
+        var descripcionCell = document.createElement("td");
+        descripcionCell.setAttribute("data-edad", item.descripcion);
+        descripcionCell.innerHTML = item.descripcion;
+    
+        var TipoProdCell = document.createElement("td");
+        TipoProdCell.setAttribute("data-ciudad", item.TipoProd);
+        TipoProdCell.innerHTML = item.TipoProd;
+    
+        var CantidadCell = document.createElement("td");
+        CantidadCell.setAttribute("data-nombre", item.Cantidad);
+        CantidadCell.innerHTML = item.Cantidad;
+    
+        var UnidadCell = document.createElement("td");
+        UnidadCell.setAttribute("data-edad", item.Unidad);
+        UnidadCell.innerHTML = item.Unidad;
+    
+        var FechaAltaCell = document.createElement("td");
+        FechaAltaCell.setAttribute("data-ciudad", item.FechaAlta);
+        FechaAltaCell.innerHTML = item.FechaAlta;  
+    
+        row.appendChild(codProdCell);
+        row.appendChild(descripcionCell);
+        row.appendChild(TipoProdCell);
+        row.appendChild(CantidadCell);
+        row.appendChild(UnidadCell);
+        row.appendChild(FechaAltaCell);
+        
+        tablaBody.appendChild(row);
+    });
+        }
+        document.getElementById("Boton2").onclick= function() {    
+            $("#tabla-body").empty();
+        }
+
+
+///el script
+    var modal = document.getElementById('contenido');
+    var btnMostrarModal = document.getElementById('BotonM');
+    var btnBoton1 = document.getElementById('Boton1');
+    var btnBoton2 = document.getElementById('Boton2');
+    var btnCerrarModal = document.getElementById('cerrarModal');
+    var contenedor = document.getElementById('tablaPrincipal')
+    // Asignar un manejador de eventos al botón para mostrar el modal
+    btnMostrarModal.onclick = function() {
+        $("#tabla-body").empty();
+        modal.style.display = 'block';
+        btnMostrarModal.disabled = true;
+        btnBoton1.disabled = true;
+        btnBoton2.disabled = true;
+        contenedor.style.opacity = 0.2;
+     //   modal.style.opacity = 1;
+      
+    }
+
+    // Asignar un manejador de eventos al botón para cerrar el modal
+    btnCerrarModal.onclick = function() {
+        modal.style.display = 'none';
+        btnMostrarModal.disabled = false;
+        btnBoton1.disabled = false;
+        btnBoton2.disabled = false;
+        contenedor.style.opacity = 1;
+     
+    }
+
+    var textoClaseProductos = '{"productos":[{"idProducto":"P01","descrProd":"Oleaginosa"},{"idProducto":"P02","descrProd":"Cereal"},{"idProducto":"P03","descrProd":"Ganado"},{"idProducto":"P04","descrProd":"Alimento"}]}';
+ 
+    objJson=JSON.parse(textoClaseProductos);
+
+    function crearOpciones() {
+
+        
+        objJson.productos.forEach(function(argValor,argIndice) {
+        
+            var objOpcion= document.createElement("option");
+            //objOpcion.setAttribute("className","elementoOptionSelect");
+            objOpcion.setAttribute("value",argValor.idProducto);
+            objOpcion.innerHTML = argValor.descrProd;
+            document.getElementById("formArticulosUm").appendChild(objOpcion);
+
+ 
+        });
+    }
+    var menuElement = document.getElementById('formArticuloUm');
+            crearOpciones(objJson, menuElement);
+
+    document.getElementById("Boton2E").onclick= function() {            
+    
+    var confirma = confirm("Esta seguro de enviar"); 
+    
+    if (confirma=true){
+
+        document.getElementById("miForm").method ="get";              
+        document.getElementById("miForm").action ="./respuestaFormulario.html";
+        document.getElementById("miForm").submit();
+        }
+    }
+          
+    });
+    </script>
+</head>
+<body>
+    <header>
+        <h2 style="margin:auto; ">Maestro de Productos</h2>
+        <button type="submit" class="boton-derecha" id="Boton1" style="text-align: right;">Mostrar Tabla</button>
+        <button type="submit" class="boton-derecha" id="Boton2" style="text-align: right;">Ocultar Tabla</button>
+        <button type="submit" class="boton-derecha" id="BotonM"style="text-align:right" >Cargar un formulario</button>
+    </header>
+
+    <table id="tablaPrincipal">
+        <thead>
+            <tr>
+                <th>Codigo Producto</th>
+                <th>Descripción</th>
+                <th>Tipo Producto</th>
+                <th>Cantidad</th>
+                <th>Unidad</th>
+                <th>Fecha de Alta</th>
+
+            </tr>
+        </thead>
+
+            <tbody id="tabla-body">
+                <!-- Aquí se generará la tabla con JavaScript -->
+            </tbody>
+    </table>
+
+    <div class="VentanaModal" id="contenido">
+        <span class="cerrar" id="cerrarModal">&times;</span>
+        <div style="text-align: center; background-color: green; height:10%;align-items: center;">
+            <h2 style="margin-top: 0;padding-top: 10px;">Formulario para Alta - Maestro de Productos</h2>
+        
+        </div>
+        <div style="padding-left: 5%; height: 75%; ">
+            <form class="formulario" id="miForm">
+                <br>
+                <div class="columnas">
+                    <div class="columna">
+                        <label for="codProd">Código de Producto:</label><br><br>
+                        <input type="text" id="codigoProd" name="codigoProd" required>
+                    </div>
+                    <div class="columna">
+                        <label for="descripcionProd">Descripción:</label><br><br>
+                        <input type="text" id="descripcionProd" name="descripcionProd" required>
+                    </div>
+                </div>
+                <div class="columnas">
+                    <div class="columna">
+                        <label for="cantidad">Cantidad:</label><br><br>
+                        <input type="num" id="cantidad" name="cantidad" required>
+                    </div>
+                    <div class="columna">
+                        <label for="claseProducto">Clase de Producto:</label><br><br>
+                        <select style="width: 100%; height: 40px;" id="formArticulosUm" name="formArticulosUm" required>
+                        </select>
+                    </div>
+                </div>
+                <div class="columnas">    
+                    <div class="columna">
+                        <label for="fechaAlta">Fecha de Alta:</label><br><br>
+                        <input type="date" id="fechaAlta" name="fechaAlta" required>
+                    </div>
+                    <div class="columna">
+                        <br><br>
+                        <button id="Boton2E">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div style="text-align: center; background-color: green; height:10%;align-items: center;">
+            <h2 style="margin-bottom: 0;padding-top: 10px;">Pie de Formulario</h2>
+        </div>
+    </div>
+
+<footer>
+<h2 >Pie de Formulario</h2>
+</footer>
+</body>
+
+</html>
